@@ -1,0 +1,19 @@
+[
+    {
+        "environment": [
+            {
+                "name": "JAVA_OPTS",
+                "value": "-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false"                }
+        ],
+        "essential": true,
+        "memory": 300,
+        "image": "weaveworksdemos/orders:0.4.7",
+        "name": "orders"
+    },
+    {
+        "essential": true,
+        "memory": 300,
+        "image": "mongo:3.4",
+        "name": "orders-db"
+    }
+]

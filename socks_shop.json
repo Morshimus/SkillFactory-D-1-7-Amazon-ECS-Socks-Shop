@@ -1,0 +1,106 @@
+[
+      {
+          "environment": [
+              {
+                  "name": "JAVA_OPTS",
+                  "value": "-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false"                }
+          ],
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "weaveworksdemos/carts:0.4.8",
+          "name": "carts"
+      },
+      {
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "mongo:3.4",
+          "name": "carts-db"
+      },
+      {
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "weaveworksdemos/catalogue:0.3.5",
+          "name": "catalogue"
+      },
+      {
+          "environment": [
+              {
+                  "name": "MYSQL_ROOT_PASSWORD",
+                  "value": "${MYSQL_ROOT_PASSWORD}"
+              },
+              {
+                  "name": "MYSQL_ALLOW_EMPTY_PASSWORD",
+                  "value": "true"
+              },
+              {
+                  "name": "MYSQL_DATABASE",
+                  "value": "socksdb"
+              }
+          ],
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "weaveworksdemos/catalogue-db:0.3.0",
+          "name": "catalogue-db"
+      },
+      {
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "weaveworksdemos/edge-router:0.1.1",
+          "name": "edge-router",
+          "portMappings": [
+              {
+                  "containerPort": 80,
+                  "hostPort": 80
+              },
+              {
+                  "containerPort": 8080,
+                  "hostPort": 8080
+              }
+          ]
+      },
+      {
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "weaveworksdemos/front-end:0.3.12",
+          "name": "front-end"
+      },
+      {
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "weaveworksdemos/payment:0.4.3",
+          "name": "payment"
+      },
+      {
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "weaveworksdemos/queue-master:0.3.1",
+          "name": "queue-master"
+      },
+      {
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "rabbitmq:3.6.8",
+          "name": "rabbitmq"
+      },
+      {
+          "environment": [
+              {
+                  "name": "JAVA_OPTS",
+                  "value": "-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false"                }
+          ],
+          "essential": true,
+          "cpu": 10,
+          "memory": 512,
+          "image": "weaveworksdemos/shipping:0.4.8",
+          "name": "shipping"
+      }
+]
